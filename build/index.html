@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7C3AED" />
+
+  <title>Dynamic QR Code Generator with Scan Analytics — QR My</title>
+  <meta name="description" content="Dynamic QR code generator with built-in scan analytics. Edit any code's destination after printing — see every scan, location, and device. Free for 5 codes and 10,000 scans/month, no credit card." />
+
+  <meta property="og:title" content="QR My — Print it once. Change where it goes anytime." />
+  <meta property="og:description" content="Dynamic QR codes you can rewrite after the print run, with scan analytics built in." />
+  <meta property="og:site_name" content="QR My" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://qrmy.app" />
+  <meta property="og:image" content="https://qrmy.app/assets/hero-overview.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="QR My — Dynamic QR Codes with Scan Analytics" />
+  <meta name="twitter:description" content="Print it once. Change where it goes anytime. See every scan, location, and device." />
+  <meta name="twitter:image" content="https://qrmy.app/assets/hero-overview.png" />
+
+  <link rel="canonical" href="https://qrmy.app/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "QR My",
+    "alternateName": "QR My — Dynamic QR Code Generator",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Dynamic QR code generator with built-in scan analytics. Edit any code's destination after printing and see every scan, location, and device.",
+    "url": "https://qrmy.app",
+    "screenshot": "https://qrmy.app/assets/hero-overview.png",
+    "offers": [
+      { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "Pro", "price": "10", "priceCurrency": "USD" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "QR My",
+    "url": "https://qrmy.app",
+    "logo": "https://qrmy.app/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "url": "https://qrmy.app/contact"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What's the difference between a dynamic and a static QR code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A dynamic QR encodes a short redirect URL we control — when someone scans it, our server forwards them to the destination you set. You can change that destination anytime, even after the code is printed. A static QR encodes the data directly into the image (a phone number, a WiFi password, a vCard). It can't be edited later, but it always works — even offline."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do my QR codes expire?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Codes you create on Free or Pro stay active as long as your account is active. There's no expiration timer, no premium QR markup added to the image, and no rate limit on the redirect itself."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I change the destination after I print?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — that's the whole point. URL codes you create as dynamic can have their destination updated anytime from the dashboard. The code on the printed page does not change."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="/" class="brand" aria-label="QR My — home">
+        <span class="brand__mark" aria-hidden="true">
+          <img src="/logo.png" alt="" width="28" height="28" decoding="async" />
+        </span>
+        <span class="brand__name">QR My <span class="brand__type" data-cycle="qr-types" aria-hidden="true">URL</span></span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#builder">Builder</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="site-header__cta">
+        <a href="https://dashboard.qrmy.app/sign-in" class="btn btn--ghost">Sign in</a>
+        <a href="https://dashboard.qrmy.app/sign-up" class="btn btn--primary" data-event="hero_cta_click">Start Free</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- 9.1 HERO -->
+    <section class="hero" aria-labelledby="hero-h1">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <h1 id="hero-h1" class="display-xl">
+            <span>Print it once.</span> <span>Change where it goes anytime.</span>
+          </h1>
+          <p class="hero__sub body-lg">
+            Generate dynamic QR codes you can edit after printing — and see every scan, location, and device.
+          </p>
+          <div class="hero__ctas">
+            <a href="https://dashboard.qrmy.app/sign-up" class="btn btn--primary btn--lg" data-event="hero_cta_click">Start Free</a>
+            <a href="#builder" class="btn btn--ghost btn--lg" data-event="hero_secondary_click">Try the builder</a>
+          </div>
+          <p class="hero__fineprint mono-caption">
+            <span class="dot dot--success" aria-hidden="true"></span>
+            5 codes, 10,000 scans / month, free. No credit card.
+          </p>
+        </div>
+
+        <div class="hero__visual" aria-hidden="false">
+          <!-- Real dashboard screenshot — the My QR Codes index page. -->
+          <div class="dash dash--screenshot" aria-label="Screenshot of the QR My dashboard — My QR Codes page">
+            <img class="dash__image"
+                 src="assets/hero-overview.png"
+                 alt="QR My dashboard, My QR Codes page. A Live Activity tile shows three recent scans, including ones from Austin, Toronto, and Sydney. A Total Scans tile shows 303 scans with a 30-day sparkline. The Your Codes panel lists 18 QR codes — five dynamic campaigns (Spring Sale 2026, Cafe Menu, Podcast Latest Episode, Conference 2026 Schedule, Product Catalog Q2) sorted by scans, plus static codes for WiFi, contacts, and SMS."
+                 width="1920" height="1080"
+                 loading="eager" decoding="async" fetchpriority="high" />
+          </div>
+          <span class="hero__visual-tag mono-caption">Real dashboard. Real codes.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9.2 BUILDER -->
+    <section id="builder" class="builder" aria-labelledby="builder-h2">
+      <div class="container">
+        <div class="section-head section-head--tight">
+          <p class="eyebrow">Try it. No sign-up.</p>
+          <h2 id="builder-h2" class="display-l">A real code, rendered as you type.</h2>
+          <p class="lead">
+            The same engine the dashboard uses. Type a URL, pick a shape, pick a color. Preview a code. Open a free account to make it dynamic and track scans.
+          </p>
+        </div>
+
+        <div class="builder__panel">
+          <div class="builder__controls">
+            <label class="field">
+              <span class="field__label mono-caption">Destination URL</span>
+              <input id="builder-url" class="field__input" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://your-restaurant.com/menu" value="https://qrmy.app" maxlength="2048" />
+            </label>
+
+            <fieldset class="field">
+              <legend class="field__label mono-caption">Module shape</legend>
+              <div class="swatches swatches--shapes" role="radiogroup" aria-label="Module shape">
+                <button type="button" class="shape is-active" data-shape="square" role="radio" aria-checked="true" aria-label="Square modules">
+                  <svg viewBox="0 0 40 40" width="22" height="22" fill="currentColor" aria-hidden="true"><rect x="0.5" y="0.5" width="8" height="8"/><rect x="16.5" y="0.5" width="8" height="8"/><rect x="24.5" y="0.5" width="8" height="8"/><rect x="0.5" y="8.5" width="8" height="8"/><rect x="8.5" y="8.5" width="8" height="8"/><rect x="24.5" y="8.5" width="8" height="8"/><rect x="32.5" y="8.5" width="8" height="8"/><rect x="8.5" y="16.5" width="8" height="8"/><rect x="16.5" y="16.5" width="8" height="8"/><rect x="32.5" y="16.5" width="8" height="8"/><rect x="0.5" y="24.5" width="8" height="8"/><rect x="8.5" y="24.5" width="8" height="8"/><rect x="24.5" y="24.5" width="8" height="8"/><rect x="8.5" y="32.5" width="8" height="8"/><rect x="16.5" y="32.5" width="8" height="8"/><rect x="24.5" y="32.5" width="8" height="8"/><rect x="32.5" y="32.5" width="8" height="8"/></svg>
+                </button>
+                <button type="button" class="shape" data-shape="rounded" role="radio" aria-checked="false" aria-label="Rounded modules">
+                  <svg viewBox="0 0 40 40" width="22" height="22" fill="currentColor" aria-hidden="true"><rect x="0.5" y="0.5" width="7" height="7" rx="3.5"/><rect x="16.5" y="0.5" width="15" height="7" rx="3.5"/><rect x="0.5" y="8.5" width="15" height="7" rx="3.5"/><rect x="24.5" y="8.5" width="15" height="7" rx="3.5"/><rect x="8.5" y="16.5" width="15" height="7" rx="3.5"/><rect x="32.5" y="16.5" width="7" height="7" rx="3.5"/><rect x="0.5" y="24.5" width="15" height="7" rx="3.5"/><rect x="24.5" y="24.5" width="7" height="7" rx="3.5"/><rect x="8.5" y="32.5" width="31" height="7" rx="3.5"/></svg>
+                </button>
+                <button type="button" class="shape" data-shape="circle" role="radio" aria-checked="false" aria-label="Circle modules">
+                  <svg viewBox="0 0 40 40" width="22" height="22" fill="currentColor" aria-hidden="true"><circle cx="4" cy="4" r="3.5"/><circle cx="20" cy="4" r="3.5"/><circle cx="28" cy="4" r="3.5"/><circle cx="4" cy="12" r="3.5"/><circle cx="12" cy="12" r="3.5"/><circle cx="28" cy="12" r="3.5"/><circle cx="36" cy="12" r="3.5"/><circle cx="12" cy="20" r="3.5"/><circle cx="20" cy="20" r="3.5"/><circle cx="36" cy="20" r="3.5"/><circle cx="4" cy="28" r="3.5"/><circle cx="12" cy="28" r="3.5"/><circle cx="28" cy="28" r="3.5"/><circle cx="12" cy="36" r="3.5"/><circle cx="20" cy="36" r="3.5"/><circle cx="28" cy="36" r="3.5"/><circle cx="36" cy="36" r="3.5"/></svg>
+                </button>
+                <button type="button" class="shape" data-shape="gapped" role="radio" aria-checked="false" aria-label="Gapped modules">
+                  <svg viewBox="0 0 40 40" width="22" height="22" fill="currentColor" aria-hidden="true"><rect x="1.5" y="1.5" width="5" height="5"/><rect x="17.5" y="1.5" width="5" height="5"/><rect x="25.5" y="1.5" width="5" height="5"/><rect x="1.5" y="9.5" width="5" height="5"/><rect x="9.5" y="9.5" width="5" height="5"/><rect x="25.5" y="9.5" width="5" height="5"/><rect x="33.5" y="9.5" width="5" height="5"/><rect x="9.5" y="17.5" width="5" height="5"/><rect x="17.5" y="17.5" width="5" height="5"/><rect x="33.5" y="17.5" width="5" height="5"/><rect x="1.5" y="25.5" width="5" height="5"/><rect x="9.5" y="25.5" width="5" height="5"/><rect x="25.5" y="25.5" width="5" height="5"/><rect x="9.5" y="33.5" width="5" height="5"/><rect x="17.5" y="33.5" width="5" height="5"/><rect x="25.5" y="33.5" width="5" height="5"/><rect x="33.5" y="33.5" width="5" height="5"/></svg>
+                </button>
+              </div>
+            </fieldset>
+
+            <fieldset class="field">
+              <legend class="field__label mono-caption">Color</legend>
+              <div class="swatches" role="radiogroup" aria-label="Pattern color">
+                <button type="button" class="swatch is-active" data-color="#7C3AED" role="radio" aria-checked="true" aria-label="Violet" style="--c: #7C3AED"></button>
+                <button type="button" class="swatch" data-color="#2563EB" role="radio" aria-checked="false" aria-label="Blue" style="--c: #2563EB"></button>
+                <button type="button" class="swatch" data-color="#059669" role="radio" aria-checked="false" aria-label="Green" style="--c: #059669"></button>
+                <button type="button" class="swatch" data-color="#D97706" role="radio" aria-checked="false" aria-label="Amber" style="--c: #D97706"></button>
+                <button type="button" class="swatch" data-color="#E11D48" role="radio" aria-checked="false" aria-label="Rose" style="--c: #E11D48"></button>
+                <button type="button" class="swatch" data-color="#0891B2" role="radio" aria-checked="false" aria-label="Cyan" style="--c: #0891B2"></button>
+              </div>
+            </fieldset>
+
+            <div class="builder__cta">
+              <a href="https://dashboard.qrmy.app/sign-up" class="btn btn--primary" data-event="builder_to_signup">Save and track this code → Start Free</a>
+              <p class="mono-caption muted">Preview only. Sign up to make it dynamic.</p>
+            </div>
+          </div>
+
+          <div class="builder__preview">
+            <div class="builder__qr-frame">
+              <div class="builder__qr" id="qr-canvas" aria-live="polite" aria-label="Generated QR code preview"></div>
+              <p class="builder__caption mono-caption" id="builder-caption">SQUARE · #7C3AED</p>
+            </div>
+            <div class="builder__readout">
+              <p class="mono-caption muted">PAYLOAD</p>
+              <p class="builder__readout-value mono-caption" id="builder-readout">https://qrmy.app</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9.3 DYNAMIC EXPLAINER -->
+    <section class="explainer" aria-labelledby="explainer-h2">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">The dynamic difference</p>
+          <h2 id="explainer-h2" class="display-l">Edit the destination after the code is printed.</h2>
+        </div>
+
+        <div class="explainer__grid">
+          <div class="explainer__demo" id="redirect-demo" aria-label="Animation showing the same printed code redirecting to two different destinations">
+            <div class="explainer__source">
+              <p class="eyebrow eyebrow--mini">Printed in March</p>
+              <div class="explainer__qr">
+                <img src="assets/gallery/rounded-violet.png"
+                     alt="A printed QR code, rounded violet modules — the same code points to a different destination today than it did when it was printed."
+                     width="144" height="144" loading="lazy" decoding="async" />
+              </div>
+              <p class="mono-caption muted">scan/qr-7f2c1a</p>
+            </div>
+
+            <div class="explainer__arrow" aria-hidden="true">
+              <svg viewBox="0 0 64 24" width="64" height="24">
+                <path d="M0 12 L56 12" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <path d="M50 6 L60 12 L50 18" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+
+            <div class="explainer__targets">
+              <div class="target target--a is-active" data-target="a">
+                <p class="eyebrow eyebrow--mini">Destination · April</p>
+                <p class="target__url mono-caption">restaurant.example/brunch</p>
+                <p class="target__title">Brunch menu, Sat–Sun</p>
+                <p class="target__body">Eggs benedict. Buttermilk pancakes. Mimosa bottomless. Reservations open Thursday.</p>
+              </div>
+              <div class="target target--b" data-target="b">
+                <p class="eyebrow eyebrow--mini">Destination · May 12</p>
+                <p class="target__url mono-caption">restaurant.example/mothers-day</p>
+                <p class="target__title">Mother's Day prix fixe</p>
+                <p class="target__body">Three courses, $58 per guest. Sittings at 11am, 1pm, 3pm. Book a table.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="explainer__copy">
+            <p class="lead">
+              A dynamic QR holds a short redirect URL we control. When someone scans it, our server points them at the destination you set. You can change that destination anytime — the printed code never changes.
+            </p>
+            <p>
+              Some payloads don't need a redirect: a phone number, a vCard, a WiFi password. Those are static, encoded directly into the image. They can't be edited later, but they always work — even offline.
+            </p>
+            <div class="explainer__legend">
+              <div>
+                <p class="mono-caption muted">DYNAMIC</p>
+                <p>URL codes only. Edit destination anytime.</p>
+              </div>
+              <div>
+                <p class="mono-caption muted">STATIC</p>
+                <p>WiFi, vCard, Phone, SMS, Email, Text. Encoded in the image.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9.4 FEATURES -->
+    <section class="features" aria-labelledby="features-h2">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">What's in the box</p>
+          <h2 id="features-h2" class="display-l">Everything you need to print, share, and track.</h2>
+        </div>
+
+        <ul class="feature-grid" role="list">
+          <li class="feature">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12a9 9 0 1 1-3-6.7"/>
+                <path d="M21 4v5h-5"/>
+              </svg>
+            </span>
+            <h3>Edit after you print.</h3>
+            <p>Dynamic destinations. Swap the URL anytime, no reprinting.</p>
+          </li>
+          <li class="feature">
+            <span class="feature__icon" aria-hidden="true">
+              <!-- AnalyticsIcon — copied verbatim from shared/ui/icons/AnalyticsIcon.tsx -->
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>
+              </svg>
+            </span>
+            <h3>Real scan analytics.</h3>
+            <p>Per-scan device, OS, country, city, time. A 7-day chart and top-locations breakdown.</p>
+          </li>
+          <li class="feature">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <circle cx="7.5" cy="10.5" r="1" fill="currentColor"/>
+                <circle cx="11" cy="7" r="1" fill="currentColor"/>
+                <circle cx="15.5" cy="9" r="1" fill="currentColor"/>
+                <circle cx="16" cy="14" r="1" fill="currentColor"/>
+                <path d="M12 21c-1.5-1-1.5-3 0-4.5s3-1.5 4.5 0"/>
+              </svg>
+            </span>
+            <h3>Module shapes and color.</h3>
+            <p>Square, rounded, circle, or gapped modules. Six on-brand colors. Same toolkit on every plan.</p>
+          </li>
+          <li class="feature">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                <rect x="14" y="14" width="7" height="7" rx="1"/>
+              </svg>
+            </span>
+            <h3>Seven QR types.</h3>
+            <p>URL, Text, vCard, WiFi, Phone, SMS, Email. Static or dynamic where it makes sense.</p>
+          </li>
+          <li class="feature">
+            <span class="feature__icon" aria-hidden="true">
+              <!-- ViewIcon — copied verbatim from shared/ui/icons/ViewIcon.tsx -->
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6"/>
+              </svg>
+            </span>
+            <h3>Live preview while building.</h3>
+            <p>See exactly what you'll print, before you print it.</p>
+          </li>
+          <li class="feature">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </span>
+            <h3>Honest free tier.</h3>
+            <p>5 codes, 10,000 scans / month, no credit card. No "free for 14 days."</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9.5 USE CASES -->
+    <section class="use-cases" aria-labelledby="usecases-h2">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Where these end up</p>
+          <h2 id="usecases-h2" class="display-l">Made for the places QR codes actually live.</h2>
+        </div>
+
+        <div class="use-grid">
+          <article class="use">
+            <div class="use__tag mono-caption">DYNAMIC</div>
+            <h3>Restaurants</h3>
+            <p>Table tents, seasonal menus, scan-to-order cards. A brunch QR points at the brunch menu Mon–Fri and the Mother's Day prix fixe on the second Sunday in May.</p>
+            <div class="use__chip">
+              <span class="mono-caption">SCAN →</span>
+              <span class="mono-caption use__url">qrmy.app/scan/qr-7f2c1a</span>
+            </div>
+          </article>
+
+          <article class="use">
+            <div class="use__tag mono-caption">DYNAMIC</div>
+            <h3>Retail and storefronts</h3>
+            <p>Window signage, sale flyers, loyalty card sign-ups. Swap destinations as inventory changes — no reprint, no reorder.</p>
+            <div class="use__chip">
+              <span class="mono-caption">SCAN →</span>
+              <span class="mono-caption use__url">qrmy.app/scan/qr-3a91d8</span>
+            </div>
+          </article>
+
+          <article class="use">
+            <div class="use__tag mono-caption">DYNAMIC</div>
+            <h3>Marketing campaigns</h3>
+            <p>Print and out-of-home attribution. One code per campaign; redirect targets change as the funnel evolves. Every scan timestamped.</p>
+            <div class="use__chip">
+              <span class="mono-caption">SCAN →</span>
+              <span class="mono-caption use__url">qrmy.app/scan/qr-c4e0b2</span>
+            </div>
+          </article>
+
+          <article class="use">
+            <div class="use__tag use__tag--static mono-caption">STATIC</div>
+            <h3>WiFi sharing</h3>
+            <p>A printed card with the network name and password, encoded as a static WiFi QR. Static because there's nothing to redirect to.</p>
+            <div class="use__chip">
+              <span class="mono-caption">PAYLOAD</span>
+              <span class="mono-caption use__url">WIFI:T:WPA;S:Cafe;P:••••;;</span>
+            </div>
+          </article>
+
+          <article class="use">
+            <div class="use__tag use__tag--static mono-caption">STATIC</div>
+            <h3>Contact cards (vCard)</h3>
+            <p>Share your name, company, phone, email in one scan. Static — the data lives in the image.</p>
+            <div class="use__chip">
+              <span class="mono-caption">PAYLOAD</span>
+              <span class="mono-caption use__url">BEGIN:VCARD ⏎ VERSION:3.0…</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9.6 ANALYTICS PREVIEW -->
+    <section class="analytics" aria-labelledby="analytics-h2">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Analytics</p>
+          <h2 id="analytics-h2" class="display-l">See who scanned, where, and from what device.</h2>
+          <p class="lead">Every scan records device, OS, country, city when available, and time. Filter by code, device, or date range.</p>
+        </div>
+
+        <div class="analytics__panel">
+          <div class="analytics__dash">
+            <!-- Real dashboard screenshot — single QR code detail page. -->
+            <div class="dash dash--screenshot" aria-label="Screenshot of the QR My dashboard — QR Code Details page">
+              <img class="dash__image"
+                   src="assets/analytics-preview.png"
+                   alt="QR My dashboard, QR Code Details page for the Podcast — Latest Episode dynamic code. The header reads 48 scans across 13 locations today. The Scan Performance bar chart spans about three weeks with daily counts. The Top Locations card lists New York, Toronto, Miami, and Austin with per-city scan counts. The Devices card breaks down mobile, desktop, and tablet share. A Recent Scan Log section sits below."
+                   width="1920" height="1200"
+                   loading="lazy" decoding="async" />
+              <span class="annotation annotation--a" aria-hidden="true">A</span>
+              <span class="annotation annotation--b" aria-hidden="true">B</span>
+              <span class="annotation annotation--c" aria-hidden="true">C</span>
+            </div>
+          </div>
+
+          <ol class="analytics__callouts" aria-label="Annotations">
+            <li>
+              <span class="callout-num mono-caption">A</span>
+              <p class="callout-title">Scan Performance</p>
+              <p>Seven days by default. Toggle to 30 days or all-time. Each bar a day.</p>
+            </li>
+            <li>
+              <span class="callout-num mono-caption">B</span>
+              <p class="callout-title">Top Locations</p>
+              <p>Country and city when MaxMind has it. Falls back to null when geo lookup fails — every row still records device and time.</p>
+            </li>
+            <li>
+              <span class="callout-num mono-caption">C</span>
+              <p class="callout-title">Devices</p>
+              <p>Mobile, tablet, or desktop. Stays accurate even when geo data is missing.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9.7 CUSTOMIZATION GALLERY -->
+    <section class="gallery" aria-labelledby="gallery-h2">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Specimen sheet</p>
+          <h2 id="gallery-h2" class="display-l">Make it match your brand.</h2>
+          <p class="lead">Sixteen codes, rendered by the same engine the dashboard uses. Any of them could be yours — pick a shape, pick a color, point it where you want.</p>
+        </div>
+
+        <div class="gallery__grid" id="gallery-grid" role="list">
+          <!-- populated by main.js -->
+        </div>
+
+        <div class="gallery__cta">
+          <a href="https://dashboard.qrmy.app/sign-up" class="btn btn--primary">Open the builder → Start Free</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9.8 PRICING -->
+    <section id="pricing" class="pricing" aria-labelledby="pricing-h2">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Pricing</p>
+          <h2 id="pricing-h2" class="display-l">Two plans. Pick the one that matches the campaign.</h2>
+          <p class="lead">Customization, analytics, every QR type, scan history filtering, dynamic destinations — the same on Free and Pro. Pro is more codes, more scans.</p>
+        </div>
+
+        <div class="price-grid">
+          <article class="price-card">
+            <header class="price-card__head">
+              <h3>Free</h3>
+              <p class="price-card__price">
+                <span class="price-card__currency">$</span><span class="price-card__amount">0</span><span class="price-card__per">/ month</span>
+              </p>
+              <p class="price-card__sub">Everything you need to try it.</p>
+            </header>
+            <dl class="price-spec">
+              <div><dt>Codes</dt><dd class="mono-caption">5</dd></div>
+              <div><dt>Scans / month</dt><dd class="mono-caption">10,000</dd></div>
+              <div><dt>Customization</dt><dd>Full</dd></div>
+              <div><dt>Analytics</dt><dd>Full</dd></div>
+              <div><dt>Credit card</dt><dd>Not required</dd></div>
+            </dl>
+            <a href="https://dashboard.qrmy.app/sign-up" class="btn btn--ghost btn--block" data-event="pricing_cta_click">Start Free</a>
+          </article>
+
+          <article class="price-card price-card--featured">
+            <header class="price-card__head">
+              <h3>Pro</h3>
+              <p class="price-card__price">
+                <span class="price-card__currency">$</span><span class="price-card__amount">10</span><span class="price-card__per">/ month</span>
+              </p>
+              <p class="price-card__sub">More codes for active campaigns.</p>
+            </header>
+            <dl class="price-spec">
+              <div><dt>Codes</dt><dd class="mono-caption">50</dd></div>
+              <div><dt>Scans / month</dt><dd class="mono-caption">100,000</dd></div>
+              <div><dt>Customization</dt><dd>Full</dd></div>
+              <div><dt>Analytics</dt><dd>Full</dd></div>
+              <div><dt>Cancel anytime</dt><dd>Stripe portal</dd></div>
+            </dl>
+            <a href="https://dashboard.qrmy.app/sign-up?plan=pro_monthly" class="btn btn--primary btn--block" data-event="pricing_cta_click">Start Pro</a>
+          </article>
+
+          <article class="price-card price-card--quiet">
+            <header class="price-card__head">
+              <h3>Need more?</h3>
+              <p class="price-card__price">
+                <span class="price-card__custom">—</span>
+              </p>
+              <p class="price-card__sub">More than 50 codes, custom volume, or a campaign that needs a hand?</p>
+            </header>
+            <dl class="price-spec">
+              <div><dt>Codes</dt><dd class="mono-caption">50+</dd></div>
+              <div><dt>Scans / month</dt><dd class="mono-caption">Talk to us</dd></div>
+              <div><dt>Onboarding</dt><dd>Async</dd></div>
+              <div><dt>Reply</dt><dd>1 business day</dd></div>
+              <div><dt>Channel</dt><dd>Email</dd></div>
+            </dl>
+            <a href="mailto:hello@qrmy.app" class="btn btn--ghost btn--block" data-event="contact_cta_click">Talk to us</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9.9 FAQ -->
+    <section id="faq" class="faq" aria-labelledby="faq-h2">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2 id="faq-h2" class="display-l">A few questions we get a lot.</h2>
+        </div>
+
+        <div class="faq__list">
+          <article class="faq__item">
+            <p class="mono-caption muted">Q · 01</p>
+            <h3>What's the difference between a dynamic and a static QR code?</h3>
+            <p>A dynamic QR encodes a short redirect URL we control — when someone scans it, our server forwards them to the destination you set. You can change that destination anytime, even after the code is printed. A static QR encodes the data directly into the image (a phone number, a WiFi password, a vCard). It can't be edited later, but it always works — even offline.</p>
+          </article>
+
+          <article class="faq__item">
+            <p class="mono-caption muted">Q · 02</p>
+            <h3>Do my QR codes expire?</h3>
+            <p>No. Codes you create on Free or Pro stay active as long as your account is active. There's no expiration timer, no "premium QR" markup added to the image, and no rate limit on the redirect itself.</p>
+          </article>
+
+          <article class="faq__item">
+            <p class="mono-caption muted">Q · 03</p>
+            <h3>Can I change the destination after I print?</h3>
+            <p>Yes — that's the whole point. URL codes you create as dynamic can have their destination updated anytime from the dashboard. The code on the printed page does not change.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9.10 FINAL CTA -->
+    <section class="final-cta" aria-labelledby="final-h2">
+      <div class="container final-cta__inner">
+        <p class="eyebrow">Make your first code</p>
+        <h2 id="final-h2" class="display-xl"><span>Print it once.</span> <span>We'll handle the rest.</span></h2>
+        <p class="lead">Five codes. 10,000 scans. Full analytics. Full customization. No credit card to start.</p>
+        <a href="https://dashboard.qrmy.app/sign-up" class="btn btn--primary btn--lg" data-event="final_cta_click">Start Free</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <a href="/" class="brand" aria-label="QR My — home">
+          <span class="brand__mark" aria-hidden="true">
+            <img src="/logo.png" alt="" width="28" height="28" decoding="async" loading="lazy" />
+          </span>
+          <span class="brand__name">QR My <span class="brand__type" data-cycle="qr-types" aria-hidden="true">URL</span></span>
+        </a>
+        <p class="mono-caption muted">qrmy.app · est. 2026</p>
+      </div>
+
+      <nav class="site-footer__cols" aria-label="Footer">
+        <div>
+          <p class="mono-caption muted">PRODUCT</p>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="https://dashboard.qrmy.app/sign-in">Sign in</a></li>
+            <li><a href="https://dashboard.qrmy.app/sign-up">Sign up</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="mono-caption muted">COMPANY</p>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="mailto:hello@qrmy.app">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="mono-caption muted">LEGAL</p>
+          <ul>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/terms">Terms</a></li>
+            <li><a href="/cookies">Cookie policy</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <p class="site-footer__legal">
+        Scan tracking is anonymized — no personal data is collected from people scanning your codes.
+      </p>
+
+      <p class="site-footer__copy mono-caption muted">© 2026 QR My.</p>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
