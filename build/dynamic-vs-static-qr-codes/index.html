@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7C3AED" />
+
+  <title>Dynamic vs Static QR Codes — What's the Difference, and Which Should You Use?</title>
+  <meta name="description" content="Dynamic QR codes redirect through a server you control, so you can change the destination after printing. Static QR codes encode the data into the image. Here's when each one is the right choice." />
+
+  <meta property="og:title" content="Dynamic vs Static QR Codes — QR My" />
+  <meta property="og:description" content="Dynamic redirects through a server. Static encodes the data into the image. Here's when each one is the right choice." />
+  <meta property="og:site_name" content="QR My" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://qrmy.app/dynamic-vs-static-qr-codes" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Dynamic vs Static QR Codes" />
+  <meta name="twitter:description" content="Dynamic redirects through a server. Static encodes the data into the image." />
+
+  <link rel="canonical" href="https://qrmy.app/dynamic-vs-static-qr-codes" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/styles.css" />
+
+  <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+  <link rel="manifest" href="/assets/favicons/site.webmanifest" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Dynamic vs Static QR Codes — What's the Difference, and Which Should You Use?",
+    "description": "Dynamic QR codes redirect through a server you control, so you can change the destination after printing. Static QR codes encode the data into the image. Here's when each one is the right choice.",
+    "author": { "@type": "Organization", "name": "QR My", "url": "https://qrmy.app" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "QR My",
+      "logo": { "@type": "ImageObject", "url": "https://qrmy.app/logo.png" }
+    },
+    "datePublished": "2026-05-09",
+    "dateModified": "2026-05-09",
+    "mainEntityOfPage": "https://qrmy.app/dynamic-vs-static-qr-codes"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://qrmy.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Dynamic vs Static QR Codes", "item": "https://qrmy.app/dynamic-vs-static-qr-codes" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="/" class="brand" aria-label="QR My — home">
+        <span class="brand__mark" aria-hidden="true">
+          <img src="/logo.png" alt="" width="28" height="28" decoding="async" />
+        </span>
+        <span class="brand__name">QR My <span class="brand__type" data-cycle="qr-types" aria-hidden="true">URL</span></span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/#builder">Builder</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/faq">FAQ</a>
+      </nav>
+
+      <div class="site-header__cta">
+        <a href="https://dashboard.qrmy.app/sign-in" class="btn btn--ghost">Sign in</a>
+        <a href="https://dashboard.qrmy.app/sign-up" class="btn btn--primary">Start Free</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="container">
+        <div class="page-head__inner">
+          <p class="eyebrow">Guide</p>
+          <h1>Dynamic vs static QR codes — what's the difference, and which should you use?</h1>
+          <p class="lead">Both look identical on paper. The difference is what's encoded in the image and what happens when someone scans it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="prose-section">
+      <div class="container">
+        <article class="prose">
+          <div class="prose__summary">
+            <p>
+              <strong>The short version.</strong> A <strong>dynamic</strong> QR code holds a short redirect URL. The destination it points to lives on a server you control, so you can change it any time — even after the code is printed. A <strong>static</strong> QR code holds the data itself — a phone number, a WiFi password, a vCard. It can't be edited later, but it doesn't need a server to work.
+            </p>
+          </div>
+
+          <h2>What a dynamic QR code is</h2>
+          <p>When you create a dynamic QR code, the image encodes a short URL on a domain we run — for example, <span class="mono-caption" style="text-transform:none;letter-spacing:0">qrmy.app/scan/qr-7f2c1a</span>. Every time someone scans the code, their phone opens that short URL, our server logs the scan, and our server redirects the phone to the destination you've set in your dashboard. You can change that destination at 9am on a Tuesday and the redirect picks it up immediately. The printed code never changes.</p>
+          <p>Dynamic only makes sense for one type of payload: a URL. There's nothing to redirect for a phone number or a WiFi password — those are the data, not a pointer to it.</p>
+
+          <h2>What a static QR code is</h2>
+          <p>A static QR encodes the actual data inside the image. A WiFi card holds the network name and password. A vCard holds your name, company, and contact details. A phone-number code holds the number. When someone scans it, their phone reads the data straight from the image and acts on it — joining the network, saving the contact, dialing the number. There is no server in the path.</p>
+          <p>Because the data is part of the image, a static code can't be edited. If your password changes, the printed card is wrong. The upside: it works without a network connection, and there's no service that can fail.</p>
+
+          <h2>Side by side</h2>
+          <table class="prose-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Dynamic</th>
+                <th>Static</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Editable after printing</th><td>Yes</td><td>No</td></tr>
+              <tr><th scope="row">Records each scan</th><td>Yes</td><td>No</td></tr>
+              <tr><th scope="row">Needs a server to work</th><td>Yes</td><td>No</td></tr>
+              <tr><th scope="row">Works offline</th><td>No</td><td>Yes</td></tr>
+              <tr><th scope="row">Image encodes</th><td>A short redirect URL</td><td>The data itself</td></tr>
+              <tr><th scope="row">Best for</th><td>Marketing URLs, menus, signage, campaigns</td><td>WiFi, contact cards, phone numbers, SMS, plain text</td></tr>
+              <tr><th scope="row">Available on QR My</th><td>URL codes</td><td>URL, Text, vCard, WiFi, Phone, SMS, Email</td></tr>
+            </tbody>
+          </table>
+
+          <h2>When to choose dynamic</h2>
+          <p>Pick dynamic when the destination might change after the code is printed, or when you care about who scanned. A few cases where dynamic is the right call:</p>
+          <ul>
+            <li><strong>Restaurant menus</strong> — the brunch QR points at the brunch menu Mon–Fri and the Mother's Day prix fixe on the second Sunday in May. Same printed table tent, two destinations.</li>
+            <li><strong>Sale and promo flyers</strong> — the sale ends, the offer rotates, the landing page changes. The flyer stack on the counter doesn't need to.</li>
+            <li><strong>Marketing campaigns and OOH</strong> — one code per campaign. Redirect targets evolve as the funnel evolves. Every scan is timestamped.</li>
+            <li><strong>Conference signage</strong> — change "Schedule" to "Slides from the keynote" between sessions without reprinting anything.</li>
+          </ul>
+
+          <h2>When to choose static</h2>
+          <p>Pick static when the payload is the data itself and there's no destination to redirect to. The classic cases:</p>
+          <ul>
+            <li><strong>WiFi cards</strong> — a printed card on a coffee shop bar holding the network name and password. No server in the path means it works even if the cafe's internet goes down for the staff laptop.</li>
+            <li><strong>Contact cards (vCard)</strong> — a one-scan way to add your name, company, phone, and email to someone's contacts. Static because the data lives in the image.</li>
+            <li><strong>Phone, SMS, Email codes</strong> — a number to dial, a pre-filled SMS, a pre-filled email. Each is the data itself.</li>
+            <li><strong>Plain text</strong> — a quick note, a poem, a serial number. Static is the only way that makes sense.</li>
+          </ul>
+
+          <h2>Common questions</h2>
+
+          <h3>Can I edit a static QR code later?</h3>
+          <p>No. The data is part of the image, so changing it requires generating a new code and reprinting. That's the trade — static codes don't depend on a server, but they're locked the moment you print them.</p>
+
+          <h3>Do dynamic codes expire?</h3>
+          <p>Not on QR My. Codes you create on Free or Pro stay active as long as your account is active. There's no expiration timer and no premium markup added to the image.</p>
+
+          <h3>What happens if my dynamic-code provider shuts down?</h3>
+          <p>If the redirect server goes away, the printed code stops working. This is the structural risk of dynamic codes — you're trusting a service to keep running. It's why we publish a clear pricing page and don't gate the redirect endpoint behind a paid tier: the redirect has to keep working for printed codes you may have made years ago.</p>
+
+          <h3>Can I track scans on a static code?</h3>
+          <p>No. The phone reads the data directly from the image and never contacts our server. There's nothing for us to log.</p>
+
+          <h3>Which is better?</h3>
+          <p>Neither. They solve different problems. If you want to change a destination after printing or see scan analytics, you need dynamic — and that means the payload has to be a URL. If you want a printed card that works without any service in the loop (a WiFi card, a vCard), static is the right answer.</p>
+
+          <h2>Try it</h2>
+          <p>QR My makes both kinds. URL codes are dynamic by default; WiFi, vCard, Phone, SMS, Email, and Text codes are static. <a href="/#builder">Try the live builder</a> with no sign-up — type a URL, pick a shape, pick a color, and see a real code render. Sign up free to make it dynamic and track scans.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="final-cta" aria-labelledby="guide-cta-h2">
+      <div class="container final-cta__inner">
+        <p class="eyebrow">Make your first code</p>
+        <h2 id="guide-cta-h2" class="display-l"><span>Print it once.</span> <span>Change where it goes anytime.</span></h2>
+        <a href="https://dashboard.qrmy.app/sign-up" class="btn btn--primary btn--lg">Start Free</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <a href="/" class="brand" aria-label="QR My — home">
+          <span class="brand__mark" aria-hidden="true">
+            <img src="/logo.png" alt="" width="28" height="28" decoding="async" loading="lazy" />
+          </span>
+          <span class="brand__name">QR My <span class="brand__type" data-cycle="qr-types" aria-hidden="true">URL</span></span>
+        </a>
+        <p class="mono-caption muted">qrmy.app · est. 2026</p>
+      </div>
+
+      <nav class="site-footer__cols" aria-label="Footer">
+        <div>
+          <p class="mono-caption muted">PRODUCT</p>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/pricing">Pricing</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="https://dashboard.qrmy.app/sign-in">Sign in</a></li>
+            <li><a href="https://dashboard.qrmy.app/sign-up">Sign up</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="mono-caption muted">COMPANY</p>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@qrmy.app">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="mono-caption muted">LEGAL</p>
+          <ul>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/terms">Terms</a></li>
+            <li><a href="/cookies">Cookie policy</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <p class="site-footer__legal">
+        Scan tracking is anonymized — no personal data is collected from people scanning your codes.
+      </p>
+
+      <p class="site-footer__copy mono-caption muted">© 2026 QR My.</p>
+    </div>
+  </footer>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>
