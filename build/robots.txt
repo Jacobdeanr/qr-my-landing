@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://qrmy.app/sitemap.xml
+Sitemap: https://www.qrmy.app/sitemap.xml
